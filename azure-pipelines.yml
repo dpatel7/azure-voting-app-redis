@@ -5,5 +5,5 @@ trigger:
 stages:
   - template: stages/ci.yml
   # - template: stages/cd.yml
-variables:
-  # - template: variables/var.yml
+# variables:
+   # - template: variables/var.yml
