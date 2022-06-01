@@ -1,0 +1,14 @@
+variables:
+  - name: dockerRegistryServiceConnection
+    value: 'a722d09b-a284-47cf-a640-bef20a387dd7'
+  - name: imageRepository
+    value: 'votingapp'
+  - name: containerRegistry
+    value: 'glasswallrebuild.azurecr.io'
+  - name: dockerfilePath
+    value: '$(Build.SourcesDirectory)/azure-vote/Dockerfile'
+  - name: tag
+    value: '$(Build.BuildId)'
+  - name: vmImageName
+    value: 'ubuntu-latest'
+

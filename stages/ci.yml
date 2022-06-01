@@ -4,17 +4,20 @@
 
 stages:
 - stage: Build
-  displayName: Build image
-  jobs:
+  displayName: Build and push docker image
+  jobs:  
   - job: Build
-    displayName: Build
+    displayName: Build image job
     pool:
-      vmImage: ubuntu-latest
+      vmImage: $(vmImageName)
     steps:
     - task: Docker@2
-      displayName: Build an image
+      displayName: Build and push an image to ACR
       inputs:
-        command: build
+        command: buildAndPush
+        repository: $(imageRepository)
         dockerfile: '$(Build.SourcesDirectory)/azure-vote/Dockerfile'
+        containerRegistry: $(dockerRegistryServiceConnection)
         tags: |
           $(tag)
+
