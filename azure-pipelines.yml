@@ -1,9 +1,9 @@
-
-name: azure-pipelines
+name: $(BuildDefinitionName)-$(Date:yyyyMMdd)$(Rev:.r)
+pool: Hosted Ubuntu 2004
 trigger:
 - master
 stages:
   - template: stages/ci.yml
-  - template: stage/cd.yml
+  - template: stages/cd.yml
 variables:
   - template: variables/var.yml
