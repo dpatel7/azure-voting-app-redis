@@ -1,10 +1,10 @@
 variables:
   - name: dockerRegistryServiceConnection
-    value: '0a7ef98f-2ab5-4b80-900f-e55ff59eb2fe'
+    value: 'd74c739b-81d0-4277-9bb5-5acb179bf0bf'
   - name: imageRepository
-    value: 'votingapp'
+    value: 'votingapptest'
   - name: containerRegistry
-    value: 'glasswallrebuild.azurecr.io'
+    value: 'votingapptest.azurecr.io'
   - name: dockerfilePath
     value: '$(Build.SourcesDirectory)/azure-vote/Dockerfile'
   - name: tag
