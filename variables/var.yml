@@ -1,6 +1,6 @@
 variables:
   - name: dockerRegistryServiceConnection
-    value: 'a722d09b-a284-47cf-a640-bef20a387dd7'
+    value: '0a7ef98f-2ab5-4b80-900f-e55ff59eb2fe'
   - name: imageRepository
     value: 'votingapp'
   - name: containerRegistry
