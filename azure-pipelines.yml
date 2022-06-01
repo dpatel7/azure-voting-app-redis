@@ -1,7 +1,7 @@
 name: $(BuildDefinitionName)-$(Date:yyyyMMdd)$(Rev:.r)
 pool: Hosted Ubuntu 2004
 trigger:
-- master
+- main
 stages:
   - template: stages/ci.yml
   # - template: stages/cd.yml
