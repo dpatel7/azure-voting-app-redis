@@ -41,7 +41,7 @@ stages:
         TargetFolder: '$(build.artifactstagingdirectory)'
     - bash:  |
         mv azure-vote-all-in-one-redis.yaml  $(varFromGenerateString)
-      name: Rename Manifest
+      name: renameManifest
   #   - task: PublishBuildArtifacts@1
   #     inputs:
   #       PathtoPublish: '$(Build.ArtifactStagingDirectory)'
