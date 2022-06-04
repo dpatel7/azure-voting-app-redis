@@ -17,8 +17,7 @@ stages:
         command: buildAndPush
         repository: $(imageRepository)
         dockerfile: '$(Build.SourcesDirectory)/azure-vote/Dockerfile'
-        # containerRegistry: $(dockerRegistryServiceConnection)
-        tags: |
+        containerRegistry: votingapptest
           $(tag)
   # - job: GenerateString
   #   steps:
