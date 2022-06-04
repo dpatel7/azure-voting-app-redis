@@ -15,7 +15,7 @@ stages:
       displayName: Login to ACR
       inputs:
         command: login
-        containerRegistry: $(imageRepository)
+        containerRegistry: votingapptest
     - task: Docker@2
       displayName: Build and push an image to ACR
       inputs:
@@ -24,27 +24,27 @@ stages:
         dockerfile: '$(Build.SourcesDirectory)/azure-vote/Dockerfile'
         tags: |
           $(tag)
-  - job: GenerateString
-    steps:
-    - bash:  |
-        echo "##vso[task.setvariable variable=buildName;isOutput=true]voteapp_$(Build.BuildId)_$(date +'%d%m%y%T')"
-      name: filename
-  - job: CopyandRenameFile
-    variables:
-      varFromGenerateString: $[ stageDependencies.One.A.outputs['ProduceVar.MyVar'] ]
-    steps:
-    - task: CopyFiles@2
-      inputs:
-        SourceFolder: '$(Build.SourcesDirectory)'
-        Contents: 'azure-vote-all-in-one-redis.yaml'
-        TargetFolder: '$(build.artifactstagingdirectory)'
-    - bash:  |
-        mv azure-vote-all-in-one-redis.yaml  echo "##vso[task.setvariable variable=buildName;isOutput=true]voteapp_$(Build.BuildId)_$(date +'%d%m%y%T')"
-    - task: PublishBuildArtifacts@1
-      inputs:
-        PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-        ArtifactName: 'drop'
-        publishLocation: 'Container'
+  # - job: GenerateString
+  #   steps:
+  #   - bash:  |
+  #       echo "##vso[task.setvariable variable=buildName;isOutput=true]voteapp_$(Build.BuildId)_$(date +'%d%m%y%T')"
+  #     name: filename
+  # - job: CopyandRenameFile
+  #   variables:
+  #     varFromGenerateString: $[ stageDependencies.One.A.outputs['ProduceVar.MyVar'] ]
+  #   steps:
+  #   - task: CopyFiles@2
+  #     inputs:
+  #       SourceFolder: '$(Build.SourcesDirectory)'
+  #       Contents: 'azure-vote-all-in-one-redis.yaml'
+  #       TargetFolder: '$(build.artifactstagingdirectory)'
+  #   - bash:  |
+  #       mv azure-vote-all-in-one-redis.yaml  echo "##vso[task.setvariable variable=buildName;isOutput=true]voteapp_$(Build.BuildId)_$(date +'%d%m%y%T')"
+  #   - task: PublishBuildArtifacts@1
+  #     inputs:
+  #       PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+  #       ArtifactName: 'drop'
+  #       publishLocation: 'Container'
         
 
 
