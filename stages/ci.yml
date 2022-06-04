@@ -43,11 +43,11 @@ stages:
         echo "$varFromGenerateString"
         mv azure-vote-all-in-one-redis.yaml  "$varFromGenerateString.yaml"
       name: renameManifest
-  #   - task: PublishBuildArtifacts@1
-  #     inputs:
-  #       PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-  #       ArtifactName: 'drop'
-  #       publishLocation: 'Container'
+    - task: PublishBuildArtifacts@1
+      inputs:
+        PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+        ArtifactName: 'drop'
+        publishLocation: 'Container'
         
 
 
