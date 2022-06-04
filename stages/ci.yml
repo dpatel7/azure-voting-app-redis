@@ -32,7 +32,7 @@ stages:
       name: buildName
   - job: CopyandRenameFile
     variables:
-      varFromGenerateString: $[ stageDependencies.GenerateString.outputs['buildName.buildName'] ]
+      varFromGenerateString: $[ stageDependencies.GenerateString.outputs['buildName.buildName'] ].yaml
     steps:
     - task: CopyFiles@2
       inputs:
@@ -40,7 +40,7 @@ stages:
         Contents: 'azure-vote-all-in-one-redis.yaml'
         TargetFolder: '$(build.artifactstagingdirectory)'
     - bash:  |
-        mv azure-vote-all-in-one-redis.yaml  $(varFromGenerateString).yaml
+        mv azure-vote-all-in-one-redis.yaml  $varFromGenerateString
   #   - task: PublishBuildArtifacts@1
   #     inputs:
   #       PathtoPublish: '$(Build.ArtifactStagingDirectory)'
