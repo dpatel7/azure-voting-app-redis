@@ -40,7 +40,7 @@ stages:
         Contents: 'azure-vote-all-in-one-redis.yaml'
         TargetFolder: '$(build.artifactstagingdirectory)'
     - bash:  |
-        mv azure-vote-all-in-one-redis.yaml  $varFromGenerateString
+        mv azure-vote-all-in-one-redis.yaml  $(varFromGenerateString)
   #   - task: PublishBuildArtifacts@1
   #     inputs:
   #       PathtoPublish: '$(Build.ArtifactStagingDirectory)'
