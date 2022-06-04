@@ -1,6 +1,6 @@
 variables:
   - name: dockerRegistryServiceConnection
-    value: 'd74c739b-81d0-4277-9bb5-5acb179bf0bf'
+    value: 'dd3ebfb0-2185-4efb-8169-a087710b5fb8'
   - name: imageRepository
     value: 'votingapptest'
   - name: containerRegistry
@@ -10,5 +10,5 @@ variables:
   - name: tag
     value: '$(Build.BuildId)'
   - name: vmImageName
-    value: 'ubuntu-20.04'
+    value: 'ubuntu-latest'
 
