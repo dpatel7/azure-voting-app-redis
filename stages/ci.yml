@@ -24,11 +24,12 @@ stages:
         dockerfile: '$(Build.SourcesDirectory)/azure-vote/Dockerfile'
         tags: |
           $(tag)
-  # - job: GenerateString
-  #   steps:
-  #   - bash:  |
-  #       echo "##vso[task.setvariable variable=buildName;isOutput=true]voteapp_$(Build.BuildId)_$(date +'%d%m%y%T')"
-  #     name: filename
+  - job: GenerateString
+    steps:
+    - bash:  |
+        fileName="voteapp_$(Build.BuildId)_$(date +'%d%m%y%T')"
+        echo "##vso[task.setvariable variable=buildName;isOutput=true]$filName"
+      name: filename
   # - job: CopyandRenameFile
   #   variables:
   #     varFromGenerateString: $[ stageDependencies.One.A.outputs['ProduceVar.MyVar'] ]
