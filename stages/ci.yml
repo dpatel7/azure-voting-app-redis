@@ -39,7 +39,7 @@ stages:
       inputs:
         SourceFolder: '$(Build.SourcesDirectory)'
         Contents: 'azure-vote-all-in-one-redis.yaml'
-        TargetFolder: '$(build.artifactstagingdirectory)'
+        TargetFolder: '$(Build.ArtifactStagingDirectory)'
     - bash:  |
         echo 'new file name is $(varFromGenerateString)'
         cp -v azure-vote-all-in-one-redis.yaml '$(varFromGenerateString).yaml'
