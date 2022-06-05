@@ -44,10 +44,8 @@ stages:
         echo 'new file name is $(varFromGenerateString)'
         cp -v azure-vote-all-in-one-redis.yaml '$(varFromGenerateString).yaml'
       name: renameManifest
-  - job: PublishBuildArtifacts
-    dependsOn: CopyandRenameFile
-    steps:
     - task: PublishBuildArtifacts@1
+      displayName: PublishArtifacts
       inputs:
         PathtoPublish: '$(Build.ArtifactStagingDirectory)'
         ArtifactName: 'votingapp'
