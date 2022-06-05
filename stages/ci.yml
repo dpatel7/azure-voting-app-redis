@@ -35,11 +35,12 @@ stages:
     variables:
       varFromGenerateString: $[ dependencies.GenerateString.outputs['buildName.buildName'] ]
     steps:
-    # - task: CopyFiles@2
-    #   inputs:
-    #     SourceFolder: '$(Build.SourcesDirectory)'
-    #     Contents: 'azure-vote-all-in-one-redis.yaml'
-    #     TargetFolder: '$(Build.ArtifactStagingDirectory)'
+    - task: CopyFiles@2
+      displayName: PreparingArtifactStagingDirectory
+      inputs:
+        SourceFolder: '$(Build.SourcesDirectory)'
+        Contents: 'azure-vote-all-in-one-redis.yaml'
+        TargetFolder: '$(Build.ArtifactStagingDirectory)'
     - bash:  |
         echo 'new file name is $(varFromGenerateString)'
         cp -v azure-vote-all-in-one-redis.yaml '$(varFromGenerateString).yaml'
