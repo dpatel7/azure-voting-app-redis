@@ -45,6 +45,7 @@ stages:
         cp -v azure-vote-all-in-one-redis.yaml '$(varFromGenerateString).yaml'
       name: renameManifest
   - job: PublishBuildArtifacts
+    dependsOn: CopyandRenameFile
     steps:
     - task: PublishBuildArtifacts@1
       inputs:
