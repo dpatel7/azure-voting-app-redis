@@ -1,5 +1,5 @@
 name: $(BuildDefinitionName)-$(Date:yyyyMMdd)$(Rev:.r)
-pool: ubuntu-latest
+pool: $(vmImageName)
 trigger:
 - main
 stages:
