@@ -1,7 +1,16 @@
-name: $(BuildDefinitionName)-$(Date:yyyyMMdd)$(Rev:.r)
-# pool: ubuntu-latest
+
 trigger:
 - main
+parameters:
+- name: Parameters
+  displayName: Test Parameters
+  type: object
+- name: Environment
+  displayName: Deployment Environment
+  default: Dev
+  values:
+  - PPE
+  - Dev
 stages:
   - template: stages/ci.yml
   # - template: stages/cd.yml

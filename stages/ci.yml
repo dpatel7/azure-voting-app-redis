@@ -41,7 +41,7 @@ stages:
         TargetFolder: '$(build.artifactstagingdirectory)'
     - bash:  |
         echo 'new file name is $(varFromGenerateString)'
-        mv azure-vote-all-in-one-redis.yaml  '$(varFromGenerateString).yaml'
+        cp -v azure-vote-all-in-one-redis.yaml '$(varFromGenerateString).yaml'
       name: renameManifest
     - task: PublishBuildArtifacts@1
       inputs:
