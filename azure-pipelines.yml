@@ -2,9 +2,6 @@
 trigger:
 - main
 parameters:
-- name: Parameters
-  displayName: Test Parameters
-  type: object
 - name: Environment
   displayName: Deployment Environment
   default: Dev
@@ -12,7 +9,9 @@ parameters:
   - PPE
   - Dev
 stages:
+  - stage: CI
   - template: stages/ci.yml
-  # - template: stages/cd.yml
+  - stage: CD
+  - template: stages/cd.yml
 variables:
    - template: variables/var.yml
