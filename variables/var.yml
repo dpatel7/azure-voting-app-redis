@@ -1,8 +1,8 @@
 variables:
   - name: imageRepository
-    value: 'votingapptest'
+    value: 'crvoteapptestuks'
   - name: containerRegistry
-    value: 'votingapptest.azurecr.io'
+    value: 'crvoteapptestuks.azurecr.io'
   - name: dockerfilePath
     value: '$(Build.SourcesDirectory)/azure-vote/Dockerfile'
   - name: tag
