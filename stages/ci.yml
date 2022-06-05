@@ -48,7 +48,7 @@ stages:
     - task: PublishBuildArtifacts@1
       displayName: PublishArtifacts
       inputs:
-        PathtoPublish: '$(Build.SourcesDirectory)'
+        PathtoPublish: '$(Build.ArtifactStagingDirectory)'
         ArtifactName: 'votingapp'
         publishLocation: 'Container'
         
