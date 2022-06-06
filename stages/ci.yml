@@ -51,13 +51,13 @@ stages:
         Contents: 'azure-vote-all-in-one-redis.yaml'
         TargetFolder: '$(Build.ArtifactStagingDirectory)'
     - bash:  |
-        sudo wget -qO /usr/local/bin/yq https://github.com/mikefarah/yq/releases/tag/v4.25.2/yq_linux_amd64
+        sudo wget -qO /usr/local/bin/yq https://github.com/mikefarah/yq/releases/download/v4.25.2/yq_linux_amd64
         sudo chmod a+x /usr/local/bin/yq
         yq --version
         imageName="${{ parameters.containerRegistry }}/${{ parameters.imageRepository }}:${{ parameters.tag }}"
         yq -s '"file_" + $index' azure-vote-all-in-one-redis.yaml
-        # yq -ie '.spec.template.spec.containers |= map(select(.image=="mcr.microsoft.com/azuredocs/azure-vote-front:v1").image |= ($imageName))' file_2.yml
-        # yq '.' file* > azure-vote-all-in-one-redis.yaml
+        yq -ie '.spec.template.spec.containers |= map(select(.image=="mcr.microsoft.com/azuredocs/azure-vote-front:v1").image |= ($imageName))' file_2.yml
+        yq '.' file* > azure-vote-all-in-one-redis.yaml
       name: replaceImagetag
     - bash:  |
         echo 'new file name is $(varFromGenerateCIVersion)'
