@@ -56,7 +56,7 @@ stages:
             inputs:
               action: deploy
               manifests: |
-                $(System.ArtifactsDirectory)/votingappManifest/*
+                $(System.ArtifactsDirectory)/votingappManifest/*.yaml
               imagePullSecrets: |
                 $(imagePullSecret)
 
