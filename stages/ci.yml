@@ -15,7 +15,7 @@ stages:
       displayName: Login to ACR
       inputs:
         command: login
-        containerRegistry: $(imageRepository)
+        containerRegistry: crvoteapptestuks
     - task: Docker@2
       displayName: Build and push an image to ACR
       inputs:
