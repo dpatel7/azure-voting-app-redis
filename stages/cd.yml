@@ -51,16 +51,12 @@ stages:
               action: createSecret
               secretName: $(imagePullSecret)
               dockerRegistryEndpoint: $(containerRegistryServiceConnection)
-          - task: DownloadPipelineArtifact@2
-            inputs:
-              artifact: 'votingappManifest'
-              path: $(Build.ArtifactStagingDirectory)
           - task: KubernetesManifest@0
             displayName: Deploy to Kubernetes cluster
             inputs:
               action: deploy
               manifests: |
-                $(Build.ArtifactStagingDirectory)/*.yml
+                $(Build.ArtifactStagingDirectory)
               imagePullSecrets: |
                 $(imagePullSecret)
 
