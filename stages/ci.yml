@@ -54,7 +54,7 @@ stages:
         sudo wget -qO /usr/local/bin/yq https://github.com/mikefarah/yq/releases/tag/v4.25.2/yq_linux_amd64
         sudo chmod a+x /usr/local/bin/yq
         imageName="${{ parameters.containerRegistry }}/${{ parameters.imageRepository }}:${{ parameters.tag }}"
-        yq -e i 'select(.template.spec.containers.name == "azure-vote-front") | .template.spec.container[0].image=$imageName'
+        yq -e i 'select(.template.spec.containers.name == "azure-vote-front") | .template.spec.container[0].image=($imageName)'
     - bash:  |
         echo 'new file name is $(varFromGenerateCIVersion)'
         cp -v azure-vote-all-in-one-redis.yaml '$(varFromGenerateCIVersion).yaml'
