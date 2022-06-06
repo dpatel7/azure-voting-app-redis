@@ -6,12 +6,12 @@ variables:
 stages:
   - template: stages/ci.yml
     parameters:
-        containerRegistryServiceConnection: '$containerRegistryServiceConnection'
-        imageRepository: '$imageRepository'
-        containerRegistry: '$containerRegistry'
-        dockerfilePath: '$(Build.SourcesDirectory)/azure-vote/Dockerfile'
-        tag: '$(Build.BuildId)'
-        k8sNamespace: $k8sNamespace
+        containerRegistryServiceConnection: ${{ variables.containerRegistryServiceConnection }}
+        imageRepository: ${{ variables.imageRepository }}
+        containerRegistry: ${{ variables.containerRegistry }}
+        dockerfilePath: ${{vatiables.dockerfilePath }}
+        tag: ${{ variables.Build.BuildId }}
+        k8sNamespace: ${{ variables.k8sNamespace }}
   # - template: stages/cd.yml
 
 
