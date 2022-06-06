@@ -36,7 +36,7 @@ stages:
   - job: GenerateCIVersion
     steps:
     - bash:  |
-        buildRef="voteapp_$(Build.BuildId)_$(date +'%d%m%y%T')"
+        buildRef=$[replace("voteapp_$(Build.BuildId)_$(date +'%d%m%y%T')",':','.']
         echo "##vso[task.setvariable variable=buildName;isOutput=true]$buildRef"
       name: buildName
   - job: PublishBuildArtifacts
