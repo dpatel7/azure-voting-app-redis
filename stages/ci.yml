@@ -56,7 +56,7 @@ stages:
         # yq '.' file* > azure-vote-all-in-one-redis.yaml
         # cat azure-vote-all-in-one-redis.yaml
         # export IMAGE="mcr.microsoft.com\/azuredocs\/azure-vote-front:v2"
-        sed -ie '' 's/image: mcr.microsoft.com\/azuredocs\/azure-vote-front:v1/image: ${IMAGE}/g' azure-vote-all-in-one-redis.yaml
+        sed -ie '' 's/image: mcr.microsoft.com\/azuredocs\/azure-vote-front:v1/image: ${imageName}'/g' azure-vote-all-in-one-redis.yaml
       name: replaceImagetag
     - bash:  |
         echo 'new file name is $(varFromGenerateCIVersion)'
