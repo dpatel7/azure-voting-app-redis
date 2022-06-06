@@ -1,5 +1,16 @@
-variables:
-   - template: variables/var.yml
+parameters:
+  - name: containerRegistryServiceConnection
+    default: 'votingapptest'
+  - name: imageRepository
+    default: 'crvoteapptestuks'
+  - name: containerRegistry
+    default: 'crvoteapptestuks.azurecr.io'
+  - name: dockerfilePath
+    default: 'test/azure-vote/Dockerfile'
+  - name: tag
+    default: 'test tag'
+  - name: k8sNamespace
+    default: 'votingapp'
 stages:
 - stage: Build
   displayName: Build and push docker image
@@ -13,16 +24,16 @@ stages:
       displayName: Login to ACR
       inputs:
         command: login
-        containerRegistry: $(containerRegistory)
+        containerRegistry: ${{ parameters.containerRegistory }}
     - task: Docker@2
       displayName: Build and push an image to ACR
       inputs:
         command: buildAndPush
-        repository: $(imageRepository)
-        dockerfile: '$(Build.SourcesDirectory)/azure-vote/Dockerfile'
-        containerRegistry: $(containerRegistory)
+        repository: ${{ parameters.imageRepository }}
+        dockerfile: ${{ parameters.dockerfilePath }}
+        containerRegistry: ${{ parameters.containerRegistory }}
         tags: |
-          $(tag)
+          ${{ parameters.tag }}
   - job: GenerateCIVersion
     steps:
     - bash:  |
@@ -43,7 +54,7 @@ stages:
     - bash:  |
         sudo wget -qO /usr/local/bin/yq https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64
         sudo chmod a+x /usr/local/bin/yq
-        yq -i -y 'template.spec.container[0].image = $(containerRegistory)/$(imageRepository)/votingapptest:$(tag)' azure-vote-all-in-one-redis.yaml
+        yq -i -y 'template.spec.container[0].image = ${{ parameter.containerRegistory }}/${{ parameter.imageRepository }}/votingapptest:${{ parameter.tag }}' azure-vote-all-in-one-redis.yaml
     - bash:  |
         echo 'new file name is $(varFromGenerateCIVersion)'
         cp -v azure-vote-all-in-one-redis.yaml '$(varFromGenerateCIVersion).yaml'
