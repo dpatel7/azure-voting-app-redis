@@ -24,14 +24,14 @@ stages:
       displayName: Login to ACR
       inputs:
         command: login
-        containerRegistry: ${{ parameters.containerRegistory }}
+        containerRegistry: ${{ parameters.containerRegistry }}
     - task: Docker@2
       displayName: Build and push an image to ACR
       inputs:
         command: buildAndPush
         repository: ${{ parameters.imageRepository }}
         dockerfile: ${{ parameters.dockerfilePath }}
-        containerRegistry: ${{ parameters.containerRegistory }}
+        containerRegistry: ${{ parameters.containerRegistry }}
         tags: |
           ${{ parameters.tag }}
   - job: GenerateCIVersion
@@ -54,7 +54,7 @@ stages:
     - bash:  |
         sudo wget -qO /usr/local/bin/yq https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64
         sudo chmod a+x /usr/local/bin/yq
-        yq -i -y 'template.spec.container[0].image = ${{ parameter.containerRegistory }}/${{ parameter.imageRepository }}/votingapptest:${{ parameter.tag }}' azure-vote-all-in-one-redis.yaml
+        yq -i -y 'template.spec.container[0].image = ${{ parameter.containerRegistry }}/${{ parameter.imageRepository }}/votingapptest:${{ parameter.tag }}' azure-vote-all-in-one-redis.yaml
     - bash:  |
         echo 'new file name is $(varFromGenerateCIVersion)'
         cp -v azure-vote-all-in-one-redis.yaml '$(varFromGenerateCIVersion).yaml'
