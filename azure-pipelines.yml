@@ -3,13 +3,6 @@ trigger:
 - main
 resources:
 - repo: self
-parameters:
-- name: Environment
-  displayName: Deployment Environment
-  default: Dev
-  values:
-  - PPE
-  - Dev
 stages:
   - stage: CI
   - template: stages/ci.yml
