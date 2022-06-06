@@ -31,7 +31,7 @@ stages:
         command: buildAndPush
         repository: ${{ parameters.imageRepository }}
         dockerfile: ${{ parameters.dockerfilePath }}
-        containerRegistry: ${{ parameters.containerRegistry}}
+        containerRegistry: ${{ parameters.containerRegistryServiceConnection}}
         tags: |
           ${{ parameters.tag }}
   - job: GenerateCIVersion
