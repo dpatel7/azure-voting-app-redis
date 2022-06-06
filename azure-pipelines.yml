@@ -1,13 +1,10 @@
 
 trigger:
 - main
-pool:
-  vmImage: ubuntu-latest
-stages:
-  - stage: CI
-  - template: stages/ci.yml
-  # - stage: CD
-  # - template: stages/cd.yml
 variables:
    - template: variables/var.yml
+stages:
+  - template: stages/ci.yml
+  # - template: stages/cd.yml
+
 
