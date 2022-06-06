@@ -1,8 +1,6 @@
 
 trigger:
 - main
-resources:
-- repo: self
 pool:
   vmImage: ubuntu-latest
 stages:
@@ -12,3 +10,4 @@ stages:
   # - template: stages/cd.yml
 variables:
    - template: variables/var.yml
+

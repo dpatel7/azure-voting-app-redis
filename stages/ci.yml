@@ -1,7 +1,7 @@
 
-stages:
-- stage: Build
-  displayName: Build and push docker image
+# stages:
+# - stage: Build
+#   displayName: Build and push docker image
   jobs:  
   - job: Build
     displayName: Build image job
