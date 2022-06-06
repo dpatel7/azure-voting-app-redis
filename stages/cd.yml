@@ -51,14 +51,12 @@ stages:
               action: createSecret
               secretName: $(imagePullSecret)
               dockerRegistryEndpoint: $(containerRegistryServiceConnection)
-          - bash: |
-              ls $(Build.ArtifactStagingDirectory)
           - task: KubernetesManifest@0
             displayName: Deploy to Kubernetes cluster
             inputs:
               action: deploy
               manifests: |
-                $(Build.ArtifactStagingDirectory)
+                $(System.ArtifactsDirectory)/*
               imagePullSecrets: |
                 $(imagePullSecret)
 
