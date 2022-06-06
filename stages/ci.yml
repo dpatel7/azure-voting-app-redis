@@ -37,6 +37,7 @@ stages:
     steps:
     - bash:  |
         buildRef=$[replace("voteapp_$(Build.BuildId)_$(date +'%d%m%y%T')",':','.']
+        echo $buildRef
         echo "##vso[task.setvariable variable=buildName;isOutput=true]$buildRef"
       name: buildName
   - job: PublishBuildArtifacts
