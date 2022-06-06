@@ -9,4 +9,6 @@ variables:
     value: '$(Build.SourcesDirectory)/azure-vote/Dockerfile'
   - name: tag
     value: '$(Build.BuildId)'
+  - name: k8sNamespace
+    value: 'votingapp'
 

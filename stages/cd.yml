@@ -15,15 +15,6 @@
             inputs:
               artifactName: 'votingappManifest'
               downloadPath: '$(System.ArtifactsDirectory)/votingappManifest'
-
-          - task: KubernetesManifest@0
-            displayName: Create imagePullSecret
-            inputs:
-              action: createSecret
-              secretName: $(imagePullSecret)
-              namespace: $(k8sNamespace)
-              dockerRegistryEndpoint: $(dockerRegistryServiceConnection)
-
           - task: KubernetesManifest@0
             displayName: Deploy to Kubernetes cluster
             inputs:
@@ -31,7 +22,5 @@
               namespace: $(k8sNamespace)
               manifests: |
                 $(System.ArtifactsDirectory)/manifests/deployment.yml
-              imagePullSecrets: |
-                $(imagePullSecret)
               containers: |
                 $(containerRegistry)/$(imageRepository):$(tag)
