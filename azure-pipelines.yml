@@ -11,7 +11,7 @@ parameters:
 stages:
   - stage: CI
   - template: stages/ci.yml
-  - stage: CD
-  - template: stages/cd.yml
+  # - stage: CD
+  # - template: stages/cd.yml
 variables:
    - template: variables/var.yml
