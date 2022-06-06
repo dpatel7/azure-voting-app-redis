@@ -1,8 +1,4 @@
-# Docker
-# Build a Docker image
-# https://docs.microsoft.com/azure/devops/pipelines/languages/docker
-trigger:
-- main
+
 stages:
 - stage: Build
   displayName: Build and push docker image
