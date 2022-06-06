@@ -11,7 +11,14 @@ stages:
         containerRegistry: ${{ variables.containerRegistry }}
         dockerfilePath: ${{variables.dockerfilePath }}
         tag: $(Build.BuildId)
+  - template: stages/cd.yml
+    parameters:
+        containerRegistryServiceConnection: ${{ variables.containerRegistryServiceConnection }}
+        imageRepository: ${{ variables.imageRepository }}
+        containerRegistry: ${{ variables.containerRegistry }}
+        dockerfilePath: ${{variables.dockerfilePath }}
+        tag: $(Build.BuildId)
         k8sNamespace: ${{ variables.k8sNamespace }}
-  # - template: stages/cd.yml
+        imagePullSecret: ${{ variables.imagePullSecret }}
 
 
