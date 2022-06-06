@@ -13,8 +13,8 @@
           steps:
           - task: DownloadPipelineArtifact@2
             inputs:
-              artifactName: 'manifests'
-              downloadPath: '$(System.ArtifactsDirectory)/manifests'
+              artifactName: 'votingappManifest'
+              downloadPath: '$(System.ArtifactsDirectory)/votingappManifest'
 
           - task: KubernetesManifest@0
             displayName: Create imagePullSecret
@@ -31,7 +31,6 @@
               namespace: $(k8sNamespace)
               manifests: |
                 $(System.ArtifactsDirectory)/manifests/deployment.yml
-                $(System.ArtifactsDirectory)/manifests/service.yml
               imagePullSecrets: |
                 $(imagePullSecret)
               containers: |

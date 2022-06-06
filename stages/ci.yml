@@ -49,7 +49,7 @@ stages:
       displayName: PublishArtifacts
       inputs:
         PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-        ArtifactName: 'votingapp'
+        ArtifactName: 'votingappManifest'
         publishLocation: 'Container'
         
 
