@@ -1,4 +1,5 @@
-
+variables:
+   - template: variables/var.yml
 stages:
 - stage: Build
   displayName: Build and push docker image
