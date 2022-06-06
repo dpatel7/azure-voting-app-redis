@@ -32,8 +32,7 @@ stages:
         repository: ${{ parameters.imageRepository }}
         dockerfile: ${{ parameters.dockerfilePath }}
         containerRegistry: ${{ parameters.containerRegistryServiceConnection}}
-        tags: |
-          ${{ parameters.tag }}
+        tags: ${{ parameters.tag }}
   - job: GenerateCIVersion
     steps:
     - bash:  |
@@ -54,7 +53,8 @@ stages:
     - bash:  |
         sudo wget -qO /usr/local/bin/yq https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64
         sudo chmod a+x /usr/local/bin/yq
-        yq -i 'template.spec.container[0].image = ${{ parameters.containerRegistry }}/${{ parameters.imageRepository }}/votingapptest:${{ parameters.tag }}' azure-vote-all-in-one-redis.yaml
+        imageName='${{ parameters.containerRegistry }}/${{ parameters.imageRepository }}:${{ parameters.tag }}'
+        yq -i 'template.spec.container[0].image = $imageName' azure-vote-all-in-one-redis.yaml
     - bash:  |
         echo 'new file name is $(varFromGenerateCIVersion)'
         cp -v azure-vote-all-in-one-redis.yaml '$(varFromGenerateCIVersion).yaml'
