@@ -10,7 +10,7 @@ stages:
         imageRepository: ${{ variables.imageRepository }}
         containerRegistry: ${{ variables.containerRegistry }}
         dockerfilePath: ${{variables.dockerfilePath }}
-        tag: ${{ variables.Build.BuildId }}
+        tag: $(Build.BuildId)
         k8sNamespace: ${{ variables.k8sNamespace }}
   # - template: stages/cd.yml
 
