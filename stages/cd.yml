@@ -21,6 +21,6 @@
               action: deploy
               namespace: $(k8sNamespace)
               manifests: |
-                $(System.ArtifactsDirectory)/manifests/deployment.yml
+                $(System.ArtifactsDirectory)/*.yml
               containers: |
                 $(containerRegistry)/$(imageRepository):$(tag)
